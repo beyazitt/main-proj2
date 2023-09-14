@@ -1,0 +1,72 @@
+﻿@using OnionBase.Domain.Entities;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<Product>
+<style>
+    #urunler-main {
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        right: 15%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #message {
+        position: absoulte;
+        top: 50%;
+        left: 15%;
+        right: 15%;
+    }
+
+    .card {
+        margin: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var her in Model)
+        {
+            @if (her.Stock != 0)
+            {
+                <div class="col-md-4">
+                    <div class="card" style="width: 12rem;">
+                        <img id="@her.ProductCode" class="card-img-top" src="data:image/jpeg;base64,@her.Image" alt="Card image cap">
+                        <div class="card-body" style="display: flex;flex-direction:column;">
+                            <h5 class="card-title">@her.ProductName</h5>
+                            <p class="card-text">@her.ProductColor</p>
+                            <span class="product-code">#@her.ProductCode</span>
+                            @*                    <input type="hidden" name="ProductId" value="@her.ProductId" />*@
+                            <a href="@Url.Action("ProductDetail", "AllProducts", new { ProductCode = her.ProductCode})" class="btn btn-dark message-button">Detaylı Gör</a>
+                            <br>
+                            <button type="button" class="btn btn-dark" data-mdb-toggle="modal" data-mdb-target="#modal-@her.ProductCode" itemid="@her.ProductCode">
+                                Tam Ekran
+                            </button>
+                            @if (User.IsInRole("admin"))
+                            {
+                                <a id="her.ProductName" href="@Url.Action("Delete", "AllProducts", new { ProductName = her.ProductName })" class="text-white-50 fw-bold"><font color="red">Ürünü Sil</font></a>
+
+                            }
+                        </div>
+                    </div>
+                    
+                </div>
+            }
+            
+
+        }
+    </div>
+
+
+</div>
+
+
+
+

@@ -1,0 +1,46 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using OnionBase.Domain.Entities.Identity;
+@using OnionBase.Presentation.ViewModels;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@model CombinedModelsForRoleManagement
+<h1>User Management</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        @using (Html.BeginForm("UpdateRole", "Account", FormMethod.Post))
+        {
+            @foreach (var user in Model.Model2.Users)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>
+                        <select name="SelectedRole">
+                            @foreach (var role in Model.Model2.Roles)
+                            {
+                                <option><div>@role.Name</div></option>
+                            }
+                        </select>
+                    </td>
+                    <td><button type="submit" formaction="@Url.Action("UpdateRole", "Account", new { selectedUser = user.Name })" class="btn btn-primary">Assign Role</button></td>
+                </tr>
+            }
+        }
+        
+    </tbody>
+</table>

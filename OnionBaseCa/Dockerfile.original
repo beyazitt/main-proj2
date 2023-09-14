@@ -1,0 +1,26 @@
+#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+COPY ["Presentation/OnionBase.Presentation/OnionBase.Presentation.csproj", "Presentation/OnionBase.Presentation/"]
+COPY ["Core/OnionBase.Application/OnionBase.Application.csproj", "Core/OnionBase.Application/"]
+COPY ["Core/OnionBase.Domain/OnionBase.Domain.csproj", "Core/OnionBase.Domain/"]
+COPY ["InfraStructure/OnionBase.InfraStructure/OnionBase.InfraStructure.csproj", "InfraStructure/OnionBase.InfraStructure/"]
+COPY ["InfraStructure/OnionBase.Persistance/OnionBase.Persistance.csproj", "InfraStructure/OnionBase.Persistance/"]
+RUN dotnet restore "Presentation/OnionBase.Presentation/OnionBase.Presentation.csproj"
+COPY . .
+WORKDIR "/src/Presentation/OnionBase.Presentation"
+RUN dotnet build "OnionBase.Presentation.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "OnionBase.Presentation.csproj" -c Release -o /app/publish /p:UseAppHost=true
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "OnionBase.Presentation.dll"]

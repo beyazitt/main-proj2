@@ -1,0 +1,47 @@
+﻿@using OnionBase.Domain.Entities;
+@using OnionBase.Presentation.DTOs;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model PaymentConfirmationDTO
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>OrderId</th>
+            <th>CreatedTime</th>
+            <th>CustomerId</th>
+            <th>ProductCode</th>
+            <th>Phone</th>
+            <th>Confirm</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (@TempData["Message"] != null)
+        {
+            <div class="alert alert-success" role="alert">
+                @TempData["Message"]
+            </div>
+        }
+        
+
+        @foreach (var person in Model.orders)
+        {
+            @using (Html.BeginForm("PaymentConfirmation", "AllProducts", new { OrderId = person.OrderId }, FormMethod.Post))
+            {
+                <tr>
+                    <td>@person.OrderId</td>
+                    <td>@person.CreatedTime</td>
+                    <td>@person.CustomerId</td>
+                    <td>@person.ProductCode</td>
+                    <td>@person.Phone</td>
+                    <td><button href="@Url.Action("PaymentConfirmation", "AllProducts", new { OrderId = person.OrderId })" type="submit">Onayla</button></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

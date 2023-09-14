@@ -1,0 +1,83 @@
+﻿@using OnionBase.Presentation.DTOs;
+@using OnionBase.Presentation.ViewModels;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model CombinedModelsForOrder
+
+<head>
+    <style>
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        /* Clearfix (clear floats) */
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Two Forms Side by Side</h2>
+
+    <div class="row">
+        <div class="column">
+            <h2>Address Form</h2>
+            <form asp-action="OrderOrQuestion" asp-controller="AllProducts" method="post">
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for="Model1.Address" />
+                    <span asp-validation-for="Model1.Address"></span>
+                    <label class="form-label" for="form3Example1cg">Adresiniz</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for="Model1.City" />
+                    <span asp-validation-for="Model1.City"></span>
+                    <label class="form-label" for="form3Example1cg">Şehir</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for="Model1.Phone" />
+                    <span asp-validation-for="Model1.Phone"></span>
+                    <label class="form-label" for="form3Example1cg">Telefon Numarası</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Ürün Kodunuz @Model.Model2.ProductCode, Lütfen Ürün Kodunu Girin" asp-for="Model1.ProductCode" />
+                    <span asp-validation-for="Model1.ProductCode"></span>
+                    <label class="form-label" asp-for="Model1.ProductCode" for="form3Example1cg"></label>
+                    
+                </div>
+
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Varsa kampanya kodunuzu girin." asp-for="Model1.CampaignCode" />
+                    <span asp-validation-for="Model1.CampaignCode"></span>
+                    <label class="form-label" asp-for="Model1.CampaignCode" for="form3Example1cg"></label>
+
+                </div>
+                <button type="submit"
+                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="background-color:#57081a">
+                    <font style="color:white">Register</font>
+                </button>
+            </form>
+        </div>
+@*        <div class="column">
+            <h2>Question Form</h2>
+            <form asp-action="CreateQuestionAsync" asp-controller="AllProducts" method="post">
+                <div class="form-outline mb-4">
+                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for="QuestionBody" />
+                    <span asp-validation-for="QuestionBody"></span>
+                    <label class="form-label" for="form3Example1cg">Sorunuz</label>
+                </div>
+                <button type="submit"
+                        class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="background-color:#57081a">
+                    <font style="color:white">Gönder</font>
+                </button>
+            </form>
+        </div>*@
+    </div>
+
+</body>

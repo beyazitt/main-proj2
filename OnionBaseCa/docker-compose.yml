@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  sql-server-db:
+    container_name: sql-server-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+        - "1433:1433"
+    environment:
+        - SA_PASSWORD=30071998-Bey@z!
+        - ACCEPT_EULA=Y
+        - hostname=sql-server-db
+    networks:
+        - custom-network
+  onionbase.presentation:
+    image: "new_version1.1"
+    build:
+      context: .
+      dockerfile: Presentation/OnionBase.Presentation/Dockerfile
+    networks:
+        - custom-network
+    ports:
+        - "5000:80"
+    depends_on:
+        - sql-server-db
+    environment:
+        - ConnectionStrings__DefaultConnection=Server=sql-server-db;Database=OnionUser-Product;User Id=sa;Password=30071998-Bey@z!;
+networks:
+    custom-network:
+

@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\OnionBaseCa",
+    "\\OnionBaseCa\\InfraStructure",
+    "\\OnionBaseCa\\InfraStructure\\OnionBase.Persistance",
+    "\\OnionBaseCa\\Presentation",
+    "\\OnionBaseCa\\Presentation\\OnionBase.Presentation",
+    "\\OnionBaseCa\\Presentation\\OnionBase.Presentation\\Controllers"
+  ],
+  "SelectedNode": "\\OnionBaseCa\\Presentation\\OnionBase.Presentation\\Controllers\\AllProductsController.cs",
+  "PreviewInSolutionExplorer": false
+}

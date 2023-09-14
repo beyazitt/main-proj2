@@ -1,0 +1,10 @@
+﻿@using OnionBase.Presentation.ViewModels;
+
+
+@model CreateRoleViewModel
+<h1>Rol Ekleme Sayfası</h1>
+<form id="roleForm" asp-action="CreateRole" asp-controller="Account">
+    <label for="roleName">Rol Adı:</label>
+    <input type="text" id="roleName" asp-for="roleName" required>
+    <button type="submit">Ekle</button>
+</form>

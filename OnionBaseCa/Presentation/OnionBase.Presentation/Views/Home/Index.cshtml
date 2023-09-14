@@ -1,0 +1,166 @@
+﻿@{
+    ViewData["Title"] = "Ana Sayfa"
+}
+@*
+@if (Model.isLoggedIn)
+{
+
+}
+*@
+<style>
+    .bestof {
+        font-family: playfair display;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.25rem;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        color: #ffffff;
+        z-index: 2;
+        text-align: center;
+    }
+
+    .bestof-title {
+        font-weight: 600;
+        font-size: 1.125rem;
+        letter-spacing: 0.25rem;
+        text-transform: uppercase;
+        min-width: 17.8438rem;
+    }
+
+    .bestof-title::after {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .bestof-text {
+        font-size: 1.3125rem;
+    }
+
+    .bestof-link {
+        font-size: 2.3125rem;
+        text-transform: uppercase;
+    }
+
+</style>
+<div class="container" style="background-image: url(/img/logo.png) ;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;">
+    <div class="karosel " style="margin-top: 20px;">
+        <div id="carouselExampleCrossfade" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button"
+                        data-mdb-target="#carouselExampleCrossfade"
+                        data-mdb-slide-to="0"
+                        class="active"
+                        aria-current="true"
+                        aria-label="Slide 1"></button>
+                <button type="button"
+                        data-mdb-target="#carouselExampleCrossfade"
+                        data-mdb-slide-to="1"
+                        aria-label="Slide 2"></button>
+                <button type="button"
+                        data-mdb-target="#carouselExampleCrossfade"
+                        data-mdb-slide-to="2"
+                        aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="/img/main-1.jpg" class="d-block w-100" alt="Wild Landscape" />
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/main-2.jpg" class="d-block w-100" alt="Camera" />
+                </div>
+                <div class="carousel-item">
+                    <img src="/img/main-3.jpg" class="d-block w-100" alt="Exotic Fruits" />
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleCrossfade" data-mdb-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleCrossfade" data-mdb-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+    <div class="cards-area" style="display: flex; flex-direction: row; margin-top: 50px; justify-content: space-around; flex-wrap: wrap;">
+        <div class="card" style="width: 16rem; margin: 5px;">
+            <img class="card-img-top" src="/img/urun1.jpg" alt="Card image cap" id="urun1">
+            <div class="card-body">
+                <h5 class="card-title" style="color: black; overflow: hidden;text-overflow: ellipsis; display: flex; justify-content:center;">GECELİK</h5>
+                <p class="card-text"></p>
+                <a href="tel:+905050439008">
+                    <button type="submit"
+                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="background-color:#57081a">
+                        <font style="color:white">Bize Ulaşın</font>
+                    </button>
+                </a>
+            </div>
+        </div>
+        <div class="card" style="width: 16rem; margin: 5px;">
+            <img class="card-img-top" src="/img/urun1.jpg" alt="Card image cap" id="urun1">
+            <div class="card-body">
+                <h5 class="card-title" style="color: black; overflow: hidden;text-overflow: ellipsis; display: flex; justify-content:center;">GECELİK</h5>
+                <p class="card-text"></p>
+                <a href="tel:+905050439008">
+                    <button type="submit"
+                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="background-color:#57081a">
+                        <font style="color:white">Bize Ulaşın</font>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-1" style="margin-top: 30px;">
+            <div class="kayit" style="margin:2px;">
+                <form method="post" asp-controller="Account" asp-action="Register">
+                    <a href="@Url.Action("Login", "Account")" class="d-block position-relative">
+                        <picture style="margin-top: 30px;" class="d-flex align-items-center">
+                            <img src="/img/kayit.jpg" alt="">
+                        </picture>
+                        <div class="bestof">
+                            <div class="bestof-title">
+                                ÜYE OL
+                            </div>
+                            <div class="bestof-text">
+                                %10 İNDİRİM
+                            </div>
+                            <div class="bestof-link">
+                                KAZAN
+                            </div>
+                        </div>
+                    </a>
+                </form>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 mb-1" style="margin-top: 30px;">
+            <div class="indirim" style="margin:2px;">
+                <form method="post" asp-controller="Account" asp-action="Login">
+                    <a href="" class="d-block position-relative">
+                        <picture style="margin-top: 30px;" class="d-flex align-items-center">
+                            <img src="/img/indirim.jpg" alt="">
+                        </picture>
+                        <div class="bestof">
+                            <div class="bestof-title">
+                                KARGO BEDAVA
+                            </div>
+                            <div class="bestof-text">
+                                200 TL SİPARİŞE
+                            </div>
+                            <div class="bestof-link">
+                                KARGO BEDAVA
+                            </div>
+                        </div>
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+</div>

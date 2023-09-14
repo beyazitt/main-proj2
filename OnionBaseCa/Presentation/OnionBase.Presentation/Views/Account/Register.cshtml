@@ -1,0 +1,80 @@
+﻿@using OnionBase.Presentation.ViewModels;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model RegisterViewModel
+@{
+    Layout = "_layoutWithoutNavbar";
+}
+
+<style><link rel="stylesheet" href="~/css/site.css" ></style>
+<link rel="stylesheet" href="~/css/mdb.min.css" />
+<section class="vh-100 bg-image"
+         style="background-image: url('/img/logo.png');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                            <form asp-action="Register" asp-controller="Account" method="post">
+                                <div class="form-outline mb-4">
+                                    @ViewBag.Message
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for="Name" />
+                                    <span asp-validation-for="Name"></span>
+                                    <label class="form-label" for="form3Example1cg">Adınız</label>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="form3Example1cg" class="form-control form-control-lg" asp-for="UserName" />
+                                    <label class="form-label" for="form3Example1cg">Kullanıcı Adınız</label>
+                                    <span asp-validation-for="UserName"></span>
+                                </div>
+
+
+                                <div class="form-outline mb-4">
+                                    <input type="email" id="form3Example3cg" class="form-control form-control-lg" asp-for="Email" />
+                                    <label class="form-label" for="form3Example3cg">Mail Adresiniz</label>
+                                    <span asp-validation-for="Email"></span>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" asp-for="Password" />
+                                    <label class="form-label" for="form3Example4cg">Şifreniz</label>
+                                    <span asp-validation-for="Password"></span>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <input type="password" id="form3Example4cg" class="form-control form-control-lg" asp-for="PhoneNumber" />
+                                    <label class="form-label" for="form3Example4cg">Telefon Numaranız</label>
+                                    <span asp-validation-for="PhoneNumber"></span>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <a href="@Url.Action("Profile", "Account")">
+                                        <button type="submit"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" style="background-color:#57081a">
+                                            <font style="color:white">Register</font>
+                                        </button>
+                                    </a>
+                                </div>
+
+                                <p class="text-center text-muted mt-5 mb-0">
+                                    Have already an account? <a href="@Url.Action("Login", "Account")"
+                                                                class="fw-bold text-body"><u>Login here</u></a>
+                                </p>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

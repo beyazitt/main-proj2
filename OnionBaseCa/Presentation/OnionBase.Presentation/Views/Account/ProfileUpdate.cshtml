@@ -1,0 +1,72 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using OnionBase.Domain.Entities.Identity;
+@using OnionBase.Presentation.ViewModels;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+@model ProfileViewModel
+<section>
+    <div class="row" style="margin-top:50px">
+        <div class="col-lg-4">
+        </div>
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <form asp-action="ProfileUpdate" asp-controller="Account" method="post" enctype="multipart/form-data">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">İsim</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <input placeholder="@Model.Name" type="text" name="Name" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <input placeholder="@Model.Email" type="text" name="Email" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Telefon Numarası</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <input placeholder="@Model.PhoneNumber" type="text" name="PhoneNumber" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="file" name="ProfileImage" accept="image/*" />
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                            </div>
+                            <div class="col-sm-9">
+                                <button type="submit" href="@Url.Action("ProfileUpdate", "Account")">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+            
+
+
+        </div>
+    </div>
+    </div>
+</section>

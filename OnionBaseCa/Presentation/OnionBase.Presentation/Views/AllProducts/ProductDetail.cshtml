@@ -1,0 +1,92 @@
+﻿@using OnionBase.Domain.Entities;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<Product>
+<style>
+    #urunler-main {
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        right: 15%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    #message {
+        position: absoulte;
+        top: 50%;
+        left: 15%;
+        right: 15%;
+    }
+
+    .card {
+        margin: 20px;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var her in Model)
+        {
+            @if (her.Stock != 0)
+            {
+                <div class="col-md-8">
+                    <div class="card" style="width: 18rem;">
+                        <img id="@her.ProductCode" class="card-img-top" src="data:image/jpeg;base64,@her.Image" alt="Card image cap">
+                        <div class="card-body" style="display: flex;flex-direction:column;">
+                            <h5 class="card-title">@her.ProductName</h5>
+                            <p class="card-text">@her.ProductColor</p>
+                            <span class="product-code">#@her.ProductCode</span>
+                            @*                    <input type="hidden" name="ProductId" value="@her.ProductId" />*@
+                            <a href="@Url.Action("OrderOrQuestion", "AllProducts", new { ProductCode = her.ProductCode})" class="btn btn-dark message-button">Sipariş Ver</a>
+                            <br>
+                            <button type="button" class="btn btn-dark" data-mdb-toggle="modal" data-mdb-target="#modal-@her.ProductCode" itemid="@her.ProductCode">
+                                Tam Ekran
+                            </button>
+                            @if (User.IsInRole("admin"))
+                            {
+                                <a id="her.ProductName" href="@Url.Action("Delete", "AllProducts", new { ProductName = her.ProductName })" class="text-white-50 fw-bold"><font color="red">Ürünü Sil</font></a>
+
+                            }
+                        </div>
+                    </div>
+                    <div id="@her.ProductCode">
+                        <div class="modal fade" id="modal-@her.ProductCode" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header" style="display: flex; ">
+                                        <h5 class="modal-title" id="exampleModalLabel">@her.ProductName</h5>
+                                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img id="@her.ProductCode" class="card-img-top" src="data:image/jpeg;base64,@her.Image" alt="Card image cap">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4" style="display: flex; flex-direction: column; justify-content: center;">
+                    <h2>Ürün Açıklaması</h2>
+                    <p>@her.ProductDescription</p>
+                    <p>@her.Price</p>
+                </div>
+            }
+
+
+        }
+    </div>
+
+
+</div>
+
+
+
+

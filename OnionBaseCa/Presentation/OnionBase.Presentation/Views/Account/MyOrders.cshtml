@@ -1,0 +1,49 @@
+﻿@using OnionBase.Domain.Entities;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<Order>
+
+
+@{
+    ViewData["Title"] = "Siparişlerim";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Adres</th>
+            <th>Ürün Kodu</th>
+            <th>Telefon Numarası</th>
+            <th>Sipariş Tarihi</th>
+            <th>Sipariş Durumu</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            @using (Html.BeginForm("PaymentApprove", "AllProducts", new { OrderId = user.OrderId }, FormMethod.Post))
+            {
+                <tr>
+                    <td>@user.Address</td>
+                    <td>@user.ProductCode</td>
+                    <td>@user.Phone</td>
+                    <td>@user.UpdatedTime</td>
+                    <td>
+                        @if (user.isConfirmed == true)
+                        {
+                            <p>Onaylandı</p>
+                        }
+                        @if (user.isConfirmed == false)
+                        {
+                            <p>Onaylanmadı</p>
+                        }
+                    </td>
+                </tr>
+            }
+            
+        }
+    </tbody>
+</table>

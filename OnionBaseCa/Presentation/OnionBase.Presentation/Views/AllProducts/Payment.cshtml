@@ -1,0 +1,58 @@
+﻿@using OnionBase.Presentation.ViewModels;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@Model float
+
+<head>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            flex-direction: column;
+        }
+
+        .container {
+            background-color: #ddd;
+            padding: 50px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 20px 2px;
+            cursor: pointer;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Your IBAN Information</h2>
+        <p>Here is your IBAN: TR12345678901234567890</p>
+        <p>Please make sure that your IBAN information is correct. After you check your IBAN, please click the confirm button below.</p>
+        <p>Ücret : @ViewBag.price </p>
+        <form asp-action="PaymentApprove" asp-controller="AllProducts" method="post">
+            <input type="hidden" name="OrderId" value="@Model" />
+            <input type="submit" value="Confirm" />
+        </form>
+    </div>
+
+</body>
+</html>
+
+
+
+
+
