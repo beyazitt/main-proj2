@@ -5,7 +5,9 @@ Platform Compatibility: This project is optimized for Linux systems. If you inte
 Architecture Design: My design utilizes the Onion Architecture, providing a robust and modular approach to development:
 
 Core Layer: This contains foundational components for every other layer, including certain database fundamentals.
+
 Infrastructure Layer: This layer is dedicated to necessary database operations and other service requirements. Think of it as the persistence layer for the database.
+
 Presentation Layer: This is the main layer where the project gets up and running. You'll find Controllers, DTOs, ViewModels, Views, and all the essential components here.
 Pricing Controller Note: At the moment, the Pricing Controller is inactive. It's reserved for future implementations, especially when payment methods are integrated into the project.
 
