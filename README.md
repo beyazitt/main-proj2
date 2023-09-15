@@ -1,6 +1,6 @@
 Welcome to my project! Before diving in, here are some key things you should know:
 
-Platform Compatibility: This project is optimized for Linux systems. If you intend to run it on a different platform, ensure you swap out the MSSQL Linux Image to match your system.
+Platform Compatibility: This project is optimized for Linux systems. If you intend to run it on a different platform, ensure you swap out the MSSQL Linux Image to match your system. You can check docker-compose.yml file for mpre detail.
 
 Architecture Design: My design utilizes the Onion Architecture, providing a robust and modular approach to development:
 
